@@ -182,11 +182,10 @@ namespace ThemeEngine.Forms
         }
 
         public static DialogResult Show(
-            string title, string content, Size size, MessageBoxButtons buttons,
-            MessageBoxContent contentStyle = MessageBoxContent.Text,
-            FormBorderStyle borderStyle = FormBorderStyle.FixedDialog,
-            BorderButtons borderButtons = BorderButtons.Close, Icon messageBoxIcon = null,
-            Image messageBoxImage = null)
+            string title, string content, MessageBoxButtons buttons, Icon messageBoxIcon = null,
+            MessageBoxContent contentStyle = MessageBoxContent.Text, Image messageBoxImage = null,
+            FormBorderStyle borderStyle = FormBorderStyle.FixedDialog, Size size = default,
+            BorderButtons borderButtons = BorderButtons.Close)
         {
             StyledMessageBoxSettings settings = new StyledMessageBoxSettings
             {
