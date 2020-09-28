@@ -125,9 +125,42 @@ namespace ThemeEngine
                     themeItems.Add(styleItem);
                 }
             }
+            else if (control is TreeView tv)
+            {
+                List<StyleItem> ret = RegisterTreeView(tv, selectors);
+                foreach (StyleItem styleItem in ret)
+                {
+                    themeItems.Add(styleItem);
+                }
+            }
+
+
 
 
             Reload();
+        }
+
+        private static List<StyleItem> RegisterTreeView(TreeView tv, string[] selectors)
+        {
+            string[] cellSelectorTags =
+                selectors.Concat(new[] { "node" }).Distinct().ToArray();
+            List<StyleItem> ret = new List<StyleItem>();
+            
+            foreach (TreeNode treeNode in tv.Nodes)
+            {
+                AddNodeStyleItem(ret, cellSelectorTags, treeNode);
+            }
+
+            return ret;
+        }
+
+        private static void AddNodeStyleItem(List<StyleItem> items, string[] selectors, TreeNode node)
+        {
+            items.Add(new StyleItem(selectors, node));
+            foreach (TreeNode nodeNode in node.Nodes)
+            {
+                AddNodeStyleItem(items, selectors, nodeNode);
+            }
         }
 
         private static List<StyleItem> RegisterDataGridView(DataGridView dgv, string[] selectors)
