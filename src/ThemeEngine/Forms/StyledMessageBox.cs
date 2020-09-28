@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ThemeEngine.Forms
 {
-    
+
 
     public partial class StyledMessageBox : Form
     {
@@ -55,6 +55,10 @@ namespace ThemeEngine.Forms
             if (!settings.Size.IsEmpty)
             {
                 Size = settings.Size;
+            }
+            else if (settings.ContentStyle == MessageBoxContent.Text)
+            {
+                Size = new Size(settings.MessageBoxSideImage != null ? 380 : 280, 280);
             }
 
             Control contentContainer = CreateContentControl(settings.Content, settings.ContentStyle);
@@ -120,8 +124,8 @@ namespace ThemeEngine.Forms
                 Label lbl = new Label();
                 lbl.Parent = panelDialogContent;
                 lbl.Dock = DockStyle.Fill;
-                lbl.AutoSize = true;
-                lbl.Padding = new Padding(5);
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
+                lbl.Padding = new Padding(50);
                 lbl.Text = content;
                 return lbl;
             }

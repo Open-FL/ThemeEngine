@@ -30,16 +30,16 @@
         {
             this.panelDialogButtons = new System.Windows.Forms.Panel();
             this.flpDialogButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnYes = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
+            this.btnYes = new System.Windows.Forms.Button();
             this.btnRetry = new System.Windows.Forms.Button();
+            this.btnIgnore = new System.Windows.Forms.Button();
             this.panelImage = new System.Windows.Forms.Panel();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.panelDialogContent = new System.Windows.Forms.Panel();
-            this.btnIgnore = new System.Windows.Forms.Button();
             this.panelDialogButtons.SuspendLayout();
             this.flpDialogButtons.SuspendLayout();
             this.panelImage.SuspendLayout();
@@ -52,7 +52,7 @@
             this.panelDialogButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelDialogButtons.Location = new System.Drawing.Point(0, 217);
             this.panelDialogButtons.Name = "panelDialogButtons";
-            this.panelDialogButtons.Size = new System.Drawing.Size(587, 38);
+            this.panelDialogButtons.Size = new System.Drawing.Size(584, 38);
             this.panelDialogButtons.TabIndex = 0;
             // 
             // flpDialogButtons
@@ -69,23 +69,13 @@
             this.flpDialogButtons.Name = "flpDialogButtons";
             this.flpDialogButtons.Padding = new System.Windows.Forms.Padding(5);
             this.flpDialogButtons.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flpDialogButtons.Size = new System.Drawing.Size(587, 38);
+            this.flpDialogButtons.Size = new System.Drawing.Size(584, 38);
             this.flpDialogButtons.TabIndex = 0;
             this.flpDialogButtons.WrapContents = false;
             // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(337, 8);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
             // btnAbort
             // 
-            this.btnAbort.Location = new System.Drawing.Point(499, 8);
+            this.btnAbort.Location = new System.Drawing.Point(496, 8);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(75, 23);
             this.btnAbort.TabIndex = 1;
@@ -95,7 +85,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(418, 8);
+            this.btnCancel.Location = new System.Drawing.Point(415, 8);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -103,19 +93,19 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnYes
+            // btnOK
             // 
-            this.btnYes.Location = new System.Drawing.Point(175, 8);
-            this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(75, 23);
-            this.btnYes.TabIndex = 3;
-            this.btnYes.Text = "Yes";
-            this.btnYes.UseVisualStyleBackColor = true;
-            this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
+            this.btnOK.Location = new System.Drawing.Point(334, 8);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 0;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnNo
             // 
-            this.btnNo.Location = new System.Drawing.Point(256, 8);
+            this.btnNo.Location = new System.Drawing.Point(253, 8);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(75, 23);
             this.btnNo.TabIndex = 4;
@@ -123,15 +113,35 @@
             this.btnNo.UseVisualStyleBackColor = true;
             this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
             // 
+            // btnYes
+            // 
+            this.btnYes.Location = new System.Drawing.Point(172, 8);
+            this.btnYes.Name = "btnYes";
+            this.btnYes.Size = new System.Drawing.Size(75, 23);
+            this.btnYes.TabIndex = 3;
+            this.btnYes.Text = "Yes";
+            this.btnYes.UseVisualStyleBackColor = true;
+            this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
+            // 
             // btnRetry
             // 
-            this.btnRetry.Location = new System.Drawing.Point(94, 8);
+            this.btnRetry.Location = new System.Drawing.Point(91, 8);
             this.btnRetry.Name = "btnRetry";
             this.btnRetry.Size = new System.Drawing.Size(75, 23);
             this.btnRetry.TabIndex = 5;
             this.btnRetry.Text = "Retry";
             this.btnRetry.UseVisualStyleBackColor = true;
             this.btnRetry.Click += new System.EventHandler(this.btnRetry_Click);
+            // 
+            // btnIgnore
+            // 
+            this.btnIgnore.Location = new System.Drawing.Point(10, 8);
+            this.btnIgnore.Name = "btnIgnore";
+            this.btnIgnore.Size = new System.Drawing.Size(75, 23);
+            this.btnIgnore.TabIndex = 6;
+            this.btnIgnore.Text = "Ignore";
+            this.btnIgnore.UseVisualStyleBackColor = true;
+            this.btnIgnore.Click += new System.EventHandler(this.btnIgnore_Click);
             // 
             // panelImage
             // 
@@ -155,18 +165,8 @@
             this.panelDialogContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDialogContent.Location = new System.Drawing.Point(117, 0);
             this.panelDialogContent.Name = "panelDialogContent";
-            this.panelDialogContent.Size = new System.Drawing.Size(470, 217);
+            this.panelDialogContent.Size = new System.Drawing.Size(467, 217);
             this.panelDialogContent.TabIndex = 2;
-            // 
-            // btnIgnore
-            // 
-            this.btnIgnore.Location = new System.Drawing.Point(13, 8);
-            this.btnIgnore.Name = "btnIgnore";
-            this.btnIgnore.Size = new System.Drawing.Size(75, 23);
-            this.btnIgnore.TabIndex = 6;
-            this.btnIgnore.Text = "Ignore";
-            this.btnIgnore.UseVisualStyleBackColor = true;
-            this.btnIgnore.Click += new System.EventHandler(this.btnIgnore_Click);
             // 
             // StyledMessageBox
             // 
