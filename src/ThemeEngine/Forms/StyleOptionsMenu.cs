@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,11 +10,20 @@ namespace ThemeEngine.Forms
     public partial class StyleOptionsMenu : Form
     {
 
+        private static readonly List<DataGridView> ActiveComponents = new List<DataGridView>();
+
         static StyleOptionsMenu()
         {
             StyleManager.OnReload += StyleManagerOnOnReload;
         }
-        private static readonly List<DataGridView> ActiveComponents = new List<DataGridView>();
+
+        public StyleOptionsMenu()
+        {
+            InitializeComponent();
+            StyleManager.RegisterControls(this, "style-options");
+
+            AddView(dgvOptions);
+        }
 
 
         public static DataGridView CreateGridView()
@@ -33,10 +43,10 @@ namespace ThemeEngine.Forms
             dgvOptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvOptions.Columns.AddRange(OptionName, OptionValue);
             dgvOptions.Dock = DockStyle.Fill;
-            dgvOptions.Location = new System.Drawing.Point(0, 0);
+            dgvOptions.Location = new Point(0, 0);
             dgvOptions.MultiSelect = false;
             dgvOptions.Name = "dgvOptions";
-            dgvOptions.Size = new System.Drawing.Size(690, 490);
+            dgvOptions.Size = new Size(690, 490);
             dgvOptions.TabIndex = 0;
 
             StyleManager.RegisterControl(dgvOptions, "style-options");
@@ -52,9 +62,10 @@ namespace ThemeEngine.Forms
             ActiveComponents.Add(dgvOptions);
             ReloadView(dgvOptions);
         }
+
         private static void SaveGridInputValue(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgvOptions = (DataGridView)sender;
+            DataGridView dgvOptions = (DataGridView) sender;
             string key = dgvOptions[e.ColumnIndex - 1, e.RowIndex].Value.ToString();
             StyleOption option = StyleManager.StyleOptions.FirstOrDefault(x => x.Keyword == key);
             if (option != null)
@@ -67,6 +78,7 @@ namespace ThemeEngine.Forms
                 }
             }
         }
+
         private static void ReloadView(DataGridView dgvOptions)
         {
             dgvOptions.Rows.Clear();
@@ -97,13 +109,5 @@ namespace ThemeEngine.Forms
             }
         }
 
-        public StyleOptionsMenu()
-        {
-            InitializeComponent();
-            StyleManager.RegisterControls(this, "style-options");
-
-            AddView(dgvOptions);
-        }
-        
     }
 }

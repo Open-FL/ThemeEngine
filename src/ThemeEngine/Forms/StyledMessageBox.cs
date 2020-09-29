@@ -1,26 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ThemeEngine.Forms
 {
-
-
     public partial class StyledMessageBox : Form
     {
+
         [Flags]
         public enum BorderButtons
         {
 
             Minimize = 1,
             Maximize = 2,
-            Close = 4,
+            Close = 4
 
         }
 
@@ -28,22 +21,7 @@ namespace ThemeEngine.Forms
         {
 
             Text,
-            RichText,
-
-        }
-
-        private class StyledMessageBoxSettings
-        {
-
-            public string Title;
-            public string Content;
-            public Size Size;
-            public FormBorderStyle BorderStyle = FormBorderStyle.FixedDialog;
-            public BorderButtons ActivatedBorderButtons = BorderButtons.Close;
-            public MessageBoxButtons ActivatedDialogButtons = MessageBoxButtons.OK;
-            public Icon MessageBoxIcon;
-            public Image MessageBoxSideImage;
-            public MessageBoxContent ContentStyle = MessageBoxContent.Text;
+            RichText
 
         }
 
@@ -99,8 +77,8 @@ namespace ThemeEngine.Forms
             btnAbort.Visible = settings.ActivatedDialogButtons == MessageBoxButtons.AbortRetryIgnore;
 
             btnCancel.Visible = settings.ActivatedDialogButtons == MessageBoxButtons.RetryCancel ||
-                               settings.ActivatedDialogButtons == MessageBoxButtons.OKCancel ||
-                               settings.ActivatedDialogButtons == MessageBoxButtons.YesNoCancel;
+                                settings.ActivatedDialogButtons == MessageBoxButtons.OKCancel ||
+                                settings.ActivatedDialogButtons == MessageBoxButtons.YesNoCancel;
 
             btnRetry.Visible = settings.ActivatedDialogButtons == MessageBoxButtons.RetryCancel ||
                                settings.ActivatedDialogButtons == MessageBoxButtons.AbortRetryIgnore;
@@ -119,16 +97,14 @@ namespace ThemeEngine.Forms
                 tb.Text = content;
                 return tb;
             }
-            else
-            {
-                Label lbl = new Label();
-                lbl.Parent = panelDialogContent;
-                lbl.Dock = DockStyle.Fill;
-                lbl.TextAlign = ContentAlignment.MiddleCenter;
-                lbl.Padding = new Padding(50);
-                lbl.Text = content;
-                return lbl;
-            }
+
+            Label lbl = new Label();
+            lbl.Parent = panelDialogContent;
+            lbl.Dock = DockStyle.Fill;
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.Padding = new Padding(50);
+            lbl.Text = content;
+            return lbl;
         }
 
         private void FinalizeDialog(DialogResult result)
@@ -176,11 +152,11 @@ namespace ThemeEngine.Forms
             string title, string content, MessageBoxContent contentStyle = MessageBoxContent.Text)
         {
             StyledMessageBoxSettings settings = new StyledMessageBoxSettings
-            {
-                Title = title,
-                ContentStyle = contentStyle,
-                Content = content
-            };
+                                                {
+                                                    Title = title,
+                                                    ContentStyle = contentStyle,
+                                                    Content = content
+                                                };
             StyledMessageBox mbox = new StyledMessageBox(settings);
             mbox.ShowDialog();
         }
@@ -192,20 +168,36 @@ namespace ThemeEngine.Forms
             BorderButtons borderButtons = BorderButtons.Close)
         {
             StyledMessageBoxSettings settings = new StyledMessageBoxSettings
-            {
-                Title = title,
-                ContentStyle = contentStyle,
-                Content = content,
-                Size = size,
-                ActivatedDialogButtons = buttons,
-                ActivatedBorderButtons = borderButtons,
-                BorderStyle = borderStyle,
-                MessageBoxSideImage = messageBoxImage,
-                MessageBoxIcon = messageBoxIcon
-            };
+                                                {
+                                                    Title = title,
+                                                    ContentStyle = contentStyle,
+                                                    Content = content,
+                                                    Size = size,
+                                                    ActivatedDialogButtons = buttons,
+                                                    ActivatedBorderButtons = borderButtons,
+                                                    BorderStyle = borderStyle,
+                                                    MessageBoxSideImage = messageBoxImage,
+                                                    MessageBoxIcon = messageBoxIcon
+                                                };
 
             StyledMessageBox mbox = new StyledMessageBox(settings);
             return mbox.ShowDialog();
+        }
+
+        private class StyledMessageBoxSettings
+        {
+
+            public BorderButtons ActivatedBorderButtons = BorderButtons.Close;
+            public MessageBoxButtons ActivatedDialogButtons = MessageBoxButtons.OK;
+            public FormBorderStyle BorderStyle = FormBorderStyle.FixedDialog;
+            public string Content;
+            public MessageBoxContent ContentStyle = MessageBoxContent.Text;
+            public Icon MessageBoxIcon;
+            public Image MessageBoxSideImage;
+            public Size Size;
+
+            public string Title;
+
         }
 
     }

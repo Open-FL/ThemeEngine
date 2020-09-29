@@ -12,6 +12,7 @@ namespace ThemeEngine
 {
     public class StyleItem
     {
+
         private static readonly Dictionary<string, object> objectCache = new Dictionary<string, object>();
         private static readonly ColorConverter converter = new ColorConverter();
         public readonly string[] Selectors;
@@ -49,7 +50,7 @@ namespace ThemeEngine
             }
         }
 
-        public static  bool TryParseExpression(string expr, out string result)
+        public static bool TryParseExpression(string expr, out string result)
         {
             try
             {
@@ -96,7 +97,7 @@ namespace ThemeEngine
 
                 if (typeof(Font).IsAssignableFrom(targetType))
                 {
-                    result = FontCache.GetFont((Font)currentValue, value);
+                    result = FontCache.GetFont((Font) currentValue, value);
                 }
 
                 if (targetType.IsEnum)
@@ -133,7 +134,7 @@ namespace ThemeEngine
 
         private Color ParseColor(string value)
         {
-            return (Color)converter.ConvertFromString(value);
+            return (Color) converter.ConvertFromString(value);
         }
 
         private object ParseLiteral(string value, Type target)
