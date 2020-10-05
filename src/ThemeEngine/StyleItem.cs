@@ -58,7 +58,7 @@ namespace ThemeEngine
                 result = StyleManager.Evaluator.Parse(cleanExpr).Value.ToString();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 result = null;
                 return false;
@@ -125,7 +125,7 @@ namespace ThemeEngine
 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 result = null;
                 return false;
