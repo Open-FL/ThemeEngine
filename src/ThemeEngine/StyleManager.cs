@@ -8,10 +8,6 @@ using System.Windows.Forms;
 using ThemeEngine.Script;
 using ThemeEngine.Script.Options;
 
-using Utility.Expressions;
-using Utility.Expressions.Enums;
-using Utility.Expressions.Interfaces;
-
 namespace ThemeEngine
 {
     public static class StyleManager
@@ -237,11 +233,11 @@ namespace ThemeEngine
 
                 public object Value { get; }
 
-                public event ValueChangedEventHandler ValueChanged;
-
                 public Type SystemType { get; }
 
                 public EvalType EvalType => EvalType.Object;
+
+                public event ValueChangedEventHandler ValueChanged;
 
             }
 
